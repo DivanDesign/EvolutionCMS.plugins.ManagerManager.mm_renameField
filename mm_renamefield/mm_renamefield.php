@@ -5,6 +5,7 @@
  * 
  * @desc A widget for ManagerManager plugin that allows one of the default document fields or template variables to be renamed within the manager.
  * 
+ * @uses MODXEvo >= 1.1.
  * @uses ManagerManager plugin 0.4.
  * 
  * @param $fields {comma separated string} - The name(s) of the document fields (or TVs) this should apply to. @required
@@ -43,21 +44,12 @@ function mm_renameField($fields, $newlabel, $roles = '', $templates = '', $newhe
 					$element = '$j("select[name*=\'metatags\']").siblings("span.warning")';
 				break;
 				
-				case 'hidemenu':
-				case 'show_in_menu':
-					$element = '$j("input[name=\'hidemenucheck\']").siblings("span.warning")';
-				break;
-				
 				case 'which_editor':
 					$element = '$j("#which_editor").prev("span.warning")';
 				break;
 				
 				case 'content':
 					$element = '$j("#content_header")';
-				break;
-				
-				case 'menuindex':
-					$element = '$j("input[name=\'menuindex\']").parents("table:first").parents("td:first").prev("td").find("span.warning")';
 				break;
 				
 				// Ones that follow the regular pattern
