@@ -36,14 +36,6 @@ function mm_renameField($fields, $newlabel, $roles = '', $templates = '', $newhe
 			
 			switch ($field){
 				// Exceptions
-				case 'keywords':
-					$element = '$j("select[name*=\'keywords\']").siblings("span.warning")';
-				break;
-				
-				case 'metatags':
-					$element = '$j("select[name*=\'metatags\']").siblings("span.warning")';
-				break;
-				
 				case 'which_editor':
 					$element = '$j("#which_editor").prev("span.warning")';
 				break;
