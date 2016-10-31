@@ -1,22 +1,22 @@
 <?php
 /**
  * mm_renameField
- * @version 1.2.1 (2014-05-08)
+ * @version 1.2.2 (2016-10-31)
  * 
  * @desc A widget for ManagerManager plugin that allows one of the default document fields or template variables to be renamed within the manager.
  * 
  * @uses MODXEvo >= 1.1.
- * @uses ManagerManager plugin 0.4.
+ * @uses ManagerManager plugin 0.7.
  * 
- * @param $fields {comma separated string} - The name(s) of the document fields (or TVs) this should apply to. @required
- * @param $newLabel {string} - The new text for the label. @required
- * @param $roles {comma separated string} - The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).
- * @param $templates {comma separated string} - Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).
- * @param $newHelp {string} - New text for the help icon with this field or for comment with TV. The same restriction apply as when using mm_changeFieldHelp directly.
+ * @param $fields {string_commaSeparated} — The name(s) of the document fields (or TVs) this should apply to. @required
+ * @param $newLabel {string} — The new text for the label. @required
+ * @param $roles {string_commaSeparated} — The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).
+ * @param $templates {string_commaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).
+ * @param $newHelp {string} — New text for the help icon with this field or for comment with TV. The same restriction apply as when using mm_changeFieldHelp directly.
  * 
- * @link http://code.divandesign.biz/modx/mm_renamefield/1.2.1
+ * @link http://code.divandesign.biz/modx/mm_renamefield/1.2.2
  * 
- * @copyright 2014
+ * @copyright 2011–2016
  */
 
 function mm_renameField($fields, $newLabel, $roles = '', $templates = '', $newHelp = ''){
@@ -25,11 +25,10 @@ function mm_renameField($fields, $newLabel, $roles = '', $templates = '', $newHe
 	
 	// if the current page is being edited by someone in the list of roles, and uses a template in the list of templates
 	if ($e->name == 'OnDocFormRender' && useThisRule($roles, $templates)){
-		
 		$fields = makeArray($fields);
 		if (count($fields) == 0){return;}
 		
-		$output = "//---------- mm_renameField :: Begin -----\n";
+		$output = '//---------- mm_renameField :: Begin -----'.PHP_EOL;
 		
 		foreach ($fields as $field){
 			$element = '';
@@ -64,7 +63,7 @@ function mm_renameField($fields, $newLabel, $roles = '', $templates = '', $newHe
 			}
 		}
 		
-		$output .= "//---------- mm_renameField :: End -----\n";
+		$output .= '//---------- mm_renameField :: End -----'.PHP_EOL;
 		
 		$e->output($output);
 	}
