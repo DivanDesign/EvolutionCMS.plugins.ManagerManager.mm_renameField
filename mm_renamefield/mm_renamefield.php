@@ -49,7 +49,7 @@ function mm_renameField($fields, $newlabel, $roles = '', $templates = '', $newhe
 					global $mm_fields;
 					
 					if (isset($mm_fields[$field])){
-						$element = '$j("'.$mm_fields[$field]['fieldtype'].'[name=\''.$mm_fields[$field]['fieldname'].'\']").parents("td:first").prev("td").children("span.warning")';
+						$element = '$j.ddMM.fields.'.$field.'.$elem.parents("td:first").prev("td").children("span.warning")';
 					}
 				break;
 			}
