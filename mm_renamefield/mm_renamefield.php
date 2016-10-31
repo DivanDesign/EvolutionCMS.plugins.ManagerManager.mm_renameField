@@ -9,17 +9,17 @@
  * @uses ManagerManager plugin 0.4.
  * 
  * @param $fields {comma separated string} - The name(s) of the document fields (or TVs) this should apply to. @required
- * @param $newlabel {string} - The new text for the label. @required
+ * @param $newLabel {string} - The new text for the label. @required
  * @param $roles {comma separated string} - The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).
  * @param $templates {comma separated string} - Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).
- * @param $newhelp {string} - New text for the help icon with this field or for comment with TV. The same restriction apply as when using mm_changeFieldHelp directly.
+ * @param $newHelp {string} - New text for the help icon with this field or for comment with TV. The same restriction apply as when using mm_changeFieldHelp directly.
  * 
  * @link http://code.divandesign.biz/modx/mm_renamefield/1.2.1
  * 
  * @copyright 2014
  */
 
-function mm_renameField($fields, $newlabel, $roles = '', $templates = '', $newhelp = ''){
+function mm_renameField($fields, $newLabel, $roles = '', $templates = '', $newHelp = ''){
 	global $modx;
 	$e = &$modx->Event;
 	
@@ -55,12 +55,12 @@ function mm_renameField($fields, $newlabel, $roles = '', $templates = '', $newhe
 			}
 			
 			if ($element != ''){
-				$output .= $element.'.contents().filter(function(){return this.nodeType === 3;}).replaceWith("'.jsSafe($newlabel).'");'."\n";
+				$output .= $element.'.contents().filter(function(){return this.nodeType === 3;}).replaceWith("'.jsSafe($newLabel).'");'."\n";
 			}
 			
 			// If new help has been supplied, do that too
-			if ($newhelp != ''){
-				mm_changeFieldHelp($field, $newhelp, $roles, $templates);
+			if ($newHelp != ''){
+				mm_changeFieldHelp($field, $newHelp, $roles, $templates);
 			}
 		}
 		
