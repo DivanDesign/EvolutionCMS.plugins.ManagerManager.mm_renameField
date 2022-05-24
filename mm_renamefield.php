@@ -86,7 +86,7 @@ function mm_renameField($params){
 			}
 			
 			if ($element != ''){
-				$output .= $element.'.contents().filter(function(){return this.nodeType === 3;}).replaceWith("' . jsSafe($params->newLabel) . '");' . PHP_EOL;
+				$output .= $element . '.contents().filter(function(){return this.nodeType === 3;}).replaceWith("' . \ddTools::escapeForJS($params->newLabel) . '");' . PHP_EOL;
 			}
 			
 			// If new help has been supplied, do that too

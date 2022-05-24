@@ -42,7 +42,8 @@ You may also read this documentation:
 	* **Required**
 	
 * `$params->newLabel`
-	* Desctription: The new text for the field label.
+	* Desctription: The new text for the field label.  
+		You can also use HTML tags.
 	* Valid values: `string`
 	* **Required**
 	
