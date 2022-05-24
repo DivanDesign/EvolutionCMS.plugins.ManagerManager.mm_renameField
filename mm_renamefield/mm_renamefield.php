@@ -8,24 +8,49 @@
  * @uses (MODX)EvolutionCMS >= 1.1
  * @uses (MODX)EvolutionCMS.plugins.ManagerManager plugin >= 0.7
  * 
- * @param $fields {stringCommaSeparated} — The name(s) of the document fields (or TVs) this should apply to. @required
- * @param $newLabel {string} — The new text for the label. @required
- * @param $roles {stringCommaSeparated} — The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).
- * @param $templates {stringCommaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).
- * @param $newHelp {string} — New text for the help icon with this field or for comment with TV. The same restriction apply as when using mm_changeFieldHelp directly.
+ * @param $params {stdClass|arrayAssociative} — Parameters, the pass-by-name style is used. @required
+ * @param $params->fields {stringCommaSeparated} — The name(s) of the document fields (or TVs) this should apply to. @required
+ * @param $params->newLabel {string} — The new text for the label. @required
+ * @param $params->roles {stringCommaSeparated} — The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).
+ * @param $params->templates {stringCommaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).
+ * @param $params->newHelp {string} — New text for the help icon with this field or for comment with TV. The same restriction apply as when using mm_changeFieldHelp directly.
  * 
  * @link https://code.divandesign.biz/modx/mm_renamefield
  * 
  * @copyright 2011–2016
  */
 
-function mm_renameField(
-	$fields,
-	$newLabel,
-	$roles = '',
-	$templates = '',
-	$newHelp = ''
-){
+function mm_renameField($params){
+	//For backward compatibility
+	if (
+		!is_array($params) &&
+		!is_object($params)
+	){
+		//Convert ordered list of params to named
+		$params = ddTools::orderedParamsToNamed([
+			'paramsList' => func_get_args(),
+			'compliance' => [
+				'fields',
+				'newLabel',
+				'roles',
+				'templates',
+				'newHelp'
+			]
+		]);
+	}
+	
+	$params = \DDTools\ObjectTools::extend([
+		'objects' => [
+			//Defaults
+			(object) [
+				'roles' => '',
+				'templates' => '',
+				'newHelp' => ''
+			],
+			$params
+		]
+	]);
+	
 	global $modx;
 	$e = &$modx->Event;
 	
@@ -33,19 +58,19 @@ function mm_renameField(
 	if (
 		$e->name == 'OnDocFormRender' &&
 		useThisRule(
-			$roles,
-			$templates
+			$params->roles,
+			$params->templates
 		)
 	){
-		$fields = makeArray($fields);
-		if (count($fields) == 0){
+		$params->fields = makeArray($params->fields);
+		if (count($params->fields) == 0){
 			return;
 		}
 		
 		$output = '//---------- mm_renameField :: Begin -----' . PHP_EOL;
 		
 		foreach (
-			$fields as
+			$params->fields as
 			$field
 		){
 			$element = '';
@@ -71,16 +96,16 @@ function mm_renameField(
 			}
 			
 			if ($element != ''){
-				$output .= $element.'.contents().filter(function(){return this.nodeType === 3;}).replaceWith("' . jsSafe($newLabel) . '");' . PHP_EOL;
+				$output .= $element.'.contents().filter(function(){return this.nodeType === 3;}).replaceWith("' . jsSafe($params->newLabel) . '");' . PHP_EOL;
 			}
 			
 			// If new help has been supplied, do that too
-			if ($newHelp != ''){
+			if ($params->newHelp != ''){
 				mm_changeFieldHelp(
 					$field,
-					$newHelp,
-					$roles,
-					$templates
+					$params->newHelp,
+					$params->roles,
+					$params->templates
 				);
 			}
 		}
