@@ -113,7 +113,7 @@ mm_renameField([
 
 * [Home page](https://code.divandesign.biz/modx/mm_renamefield)
 * [Telegram chat](https://t.me/dd_code)
-* [Packagist](https://packagist.org/packages/dd/mm_renamefield)
+* [Packagist](https://packagist.org/packages/dd/evolutioncms-plugins-managermanager-mm_renamefield)
 
 
 <link rel="stylesheet" type="text/css" href="https://DivanDesign.ru/assets/files/ddMarkdown.css" />
