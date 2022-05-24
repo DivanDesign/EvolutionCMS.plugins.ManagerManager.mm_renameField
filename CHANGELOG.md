@@ -1,6 +1,18 @@
 # (MODX)EvolutionCMS.plugins.ManagerManager.mm_renameField changelog
 
 
+## Version 1.3 (2022-05-24)
+* \* Attention! PHP >= 5.4 is required.
+* \* Parameters: The widget now uses named parameters (with backward compatibility).
+* \+ Parameters → `$params->newLabel`: The ability to use HTML tags has been added.
+* \* Better compatibility with `mm_changeFieldHelp` 1.2.
+* \+ Composer.json.
+* \+ README.
+* \+ README_ru.
+* \+ CHANGELOG.
+* \+ CHANGELOG_ru.
+
+
 ## Version 1.2.2 (2016-10-31)
 * \* Parameters → `$fields`: The deprecated fields `keywords` and `metatags` are no longer supported.
 * \* Parameters: The following have been renamed:

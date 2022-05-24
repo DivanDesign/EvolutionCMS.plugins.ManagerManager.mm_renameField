@@ -1,13 +1,13 @@
 <?php
 /**
  * mm_renameField
- * @version 1.2.2 (2016-10-31)
+ * @version 1.3 (2022-05-24)
  * 
  * @see README.md
  * 
  * @link https://code.divandesign.biz/modx/mm_renamefield
  * 
- * @copyright 2011–2016
+ * @copyright 2011–2022
  */
 
 function mm_renameField($params){
