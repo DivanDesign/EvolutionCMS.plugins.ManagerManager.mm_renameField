@@ -3,17 +3,7 @@
  * mm_renameField
  * @version 1.2.2 (2016-10-31)
  * 
- * @desc A widget for ManagerManager plugin that allows one of the default document fields or template variables to be renamed within the manager.
- * 
- * @uses (MODX)EvolutionCMS >= 1.1
- * @uses (MODX)EvolutionCMS.plugins.ManagerManager plugin >= 0.7
- * 
- * @param $params {stdClass|arrayAssociative} — Parameters, the pass-by-name style is used. @required
- * @param $params->fields {stringCommaSeparated} — The name(s) of the document fields (or TVs) this should apply to. @required
- * @param $params->newLabel {string} — The new text for the label. @required
- * @param $params->roles {stringCommaSeparated} — The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).
- * @param $params->templates {stringCommaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).
- * @param $params->newHelp {string} — New text for the help icon with this field or for comment with TV. The same restriction apply as when using mm_changeFieldHelp directly.
+ * @see README.md
  * 
  * @link https://code.divandesign.biz/modx/mm_renamefield
  * 
