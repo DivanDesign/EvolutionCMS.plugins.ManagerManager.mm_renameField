@@ -91,12 +91,12 @@ function mm_renameField($params){
 			
 			// If new help has been supplied, do that too
 			if ($params->newHelp != ''){
-				mm_changeFieldHelp(
-					$field,
-					$params->newHelp,
-					$params->roles,
-					$params->templates
-				);
+				mm_changeFieldHelp([
+					'fields' => $field,
+					'helpText' => $params->newHelp,
+					'roles' => $params->roles,
+					'templates' => $params->templates
+				]);
 			}
 		}
 		
