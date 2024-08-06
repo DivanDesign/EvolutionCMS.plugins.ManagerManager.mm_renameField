@@ -11,12 +11,12 @@
  */
 
 function mm_renameField($params){
-	//For backward compatibility
+	// For backward compatibility
 	if (
 		!is_array($params) &&
 		!is_object($params)
 	){
-		//Convert ordered list of params to named
+		// Convert ordered list of params to named
 		$params = ddTools::orderedParamsToNamed([
 			'paramsList' => func_get_args(),
 			'compliance' => [
@@ -31,7 +31,7 @@ function mm_renameField($params){
 	
 	$params = \DDTools\ObjectTools::extend([
 		'objects' => [
-			//Defaults
+			// Defaults
 			(object) [
 				'roles' => '',
 				'templates' => '',
@@ -57,7 +57,7 @@ function mm_renameField($params){
 			return;
 		}
 		
-		$output = '//---------- mm_renameField :: Begin -----' . PHP_EOL;
+		$output = '// ---------- mm_renameField :: Begin -----' . PHP_EOL;
 		
 		foreach (
 			$params->fields as
@@ -100,7 +100,7 @@ function mm_renameField($params){
 			}
 		}
 		
-		$output .= '//---------- mm_renameField :: End -----' . PHP_EOL;
+		$output .= '// ---------- mm_renameField :: End -----' . PHP_EOL;
 		
 		$e->output($output);
 	}
